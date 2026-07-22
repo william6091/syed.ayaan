@@ -10,7 +10,72 @@
 
 <style>
 
-/* CSS YAHAN PASTE KARNI HAI */
+body{
+margin:0;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:linear-gradient(-45deg,#ffb6d5,#ffc0cb,#ffd6e8,#ffe4f2);
+background-size:400% 400%;
+animation:bg 12s ease infinite;
+font-family:Arial,sans-serif;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.container{
+text-align:center;
+z-index:2;
+position:relative;
+padding:20px;
+}
+
+h1{
+font-size:55px;
+color:#ff0055;
+text-shadow:0 0 15px white;
+animation:pulse 2s infinite;
+}
+
+p{
+font-size:24px;
+color:#8b0040;
+line-height:1.8;
+max-width:900px;
+margin:auto;
+}
+
+@keyframes pulse{
+50%{
+transform:scale(1.05);
+}
+}
+
+.item{
+position:fixed;
+top:-60px;
+pointer-events:none;
+user-select:none;
+z-index:999;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-80px) rotate(0deg);
+opacity:1;
+}
+100%{
+transform:translateY(110vh) rotate(360deg);
+opacity:0.9;
+}
+}
 
 </style>
 
@@ -35,7 +100,36 @@ Hamesha aise hi meri zindagi ka hissa rehna.
 
 <script>
 
-/* JavaScript YAHAN PASTE KARNI HAI */
+const icons = [
+"❤️","❤️","❤️","❤️","❤️",
+"💋","💋","💋","💋",
+"🧿","🧿","🧿",
+"💕","💖","💗"
+];
+
+function rain() {
+
+const e = document.createElement("div");
+
+e.className = "item";
+
+e.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+
+e.style.left = Math.random() * 100 + "vw";
+
+e.style.fontSize = (20 + Math.random() * 35) + "px";
+
+e.style.animationDuration = (3 + Math.random() * 4) + "s";
+
+document.body.appendChild(e);
+
+setTimeout(() => {
+e.remove();
+}, 7000);
+
+}
+
+setInterval(rain, 120);
 
 </script>
 
