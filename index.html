@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>I Love You Meri Pyari Beti ❤️</title>
 
 <style>
 
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
 overflow:hidden;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
 background:linear-gradient(-45deg,#ffb6d5,#ffc0cb,#ffd6e8,#ffe4f2);
 background-size:400% 400%;
 animation:bg 12s ease infinite;
-font-family:Arial,sans-serif;
 }
 
 @keyframes bg{
@@ -29,32 +31,88 @@ font-family:Arial,sans-serif;
 100%{background-position:0% 50%;}
 }
 
+#heartIntro{
+position:fixed;
+width:180px;
+height:180px;
+background:red;
+transform:rotate(-45deg);
+animation:intro 3s forwards;
+z-index:1000;
+}
+
+#heartIntro:before,
+#heartIntro:after{
+content:"";
+position:absolute;
+width:180px;
+height:180px;
+background:red;
+border-radius:50%;
+}
+
+#heartIntro:before{
+top:-90px;
+left:0;
+}
+
+#heartIntro:after{
+left:90px;
+top:0;
+}
+
+@keyframes intro{
+
+0%{
+transform:scale(.1) rotate(-45deg);
+opacity:0;
+}
+
+40%{
+transform:scale(1.2) rotate(-45deg);
+opacity:1;
+}
+
+70%{
+transform:scale(1) rotate(-45deg);
+opacity:1;
+}
+
+100%{
+transform:translateY(-900px) scale(.2) rotate(-45deg);
+opacity:0;
+}
+
+}
+
 .container{
+position:absolute;
 text-align:center;
-z-index:2;
-position:relative;
+opacity:0;
+animation:showText 2s forwards;
+animation-delay:3s;
 padding:20px;
+z-index:5;
+max-width:900px;
+}
+
+@keyframes showText{
+to{
+opacity:1;
+}
 }
 
 h1{
-font-size:55px;
+font-size:60px;
 color:#ff0055;
-text-shadow:0 0 15px white;
-animation:pulse 2s infinite;
+text-shadow:0 0 20px white;
+margin-bottom:20px;
 }
 
 p{
-font-size:24px;
+font-size:28px;
 color:#8b0040;
 line-height:1.8;
-max-width:900px;
-margin:auto;
-}
-
-@keyframes pulse{
-50%{
-transform:scale(1.05);
-}
 }
 
 .item{
@@ -67,14 +125,17 @@ animation:fall linear forwards;
 }
 
 @keyframes fall{
+
 0%{
 transform:translateY(-80px) rotate(0deg);
 opacity:1;
 }
+
 100%{
 transform:translateY(110vh) rotate(360deg);
-opacity:0.9;
+opacity:.9;
 }
+
 }
 
 </style>
@@ -83,75 +144,76 @@ opacity:0.9;
 
 <body>
 
+<div id="heartIntro">❤️</div>
+
 <div class="container">
 
-<h1>I Love You Meri Pyari Beti ❤️</h1>
+<h1>💌 I Love You Meri Pyari Beti ❤️</h1>
 
 <p>
-Meri pyari si biwi, meri saanson ki wajah hai aap,
-aur meri poori duniya hai aap.
-<br><br>
-Allah ka shukar hai ke usne mujhe aap jaisi humsafar di.
-<br><br>
-Hamesha aise hi meri zindagi ka hissa rehna.
+Meri pyari si biwi,<br><br>
+
+Meri saanson ki wajah hai aap,<br>
+aur meri poori duniya hai aap.<br><br>
+
+Allah ka shukar hai ke usne mujhe<br>
+aap jaisi humsafar di.<br><br>
+
+Hamesha aise hi meri zindagi ka hissa rehna. ❤️
 </p>
 
 </div>
 
 <script>
 
+<!-- JAVASCRIPT PART 3 YAHAN AYEGA -->
+
+</script>
+<div class="container">
+
+<h1>💌 I Love You Meri Pyari Beti ❤️</h1>
+
+<p>
+
+Meri pyari si biwi,<br><br>
+
+Meri saanson ki wajah hai aap,<br>
+aur meri poori duniya hai aap.<br><br>
+
+Allah ka shukar hai ke usne mujhe<br>
+aap jaisi humsafar di.<br><br>
+
+Hamesha aise hi meri zindagi ka hissa rehna. ❤️
+
+</p>
+
+</div>
+<script>
+
 const icons = [
-"❤️","❤️","❤️","❤️","❤️",
-"💋","💋","💋","💋",
-"🧿","🧿","🧿",
-"💕","💖","💗"
+  "❤️","💖","💕","💗","💘","💞","💓","💝","🌹","💋","😘","😍","🧿"
 ];
 
 function rain() {
+  const e = document.createElement("div");
+  e.className = "item";
+  e.innerHTML = icons[Math.floor(Math.random() * icons.length)];
 
-const e = document.createElement("div");
+  e.style.left = Math.random() * window.innerWidth + "px";
+  e.style.fontSize = (20 + Math.random() * 30) + "px";
+  e.style.animationDuration = (3 + Math.random() * 4) + "s";
 
-e.className = "item";
+  document.body.appendChild(e);
 
-e.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-
-e.style.left = Math.random() * 100 + "vw";
-
-e.style.fontSize = (20 + Math.random() * 35) + "px";
-
-e.style.animationDuration = (3 + Math.random() * 4) + "s";
-
-document.body.appendChild(e);
-
-setTimeout(() => {
-e.remove();
-}, 7000);
-
+  setTimeout(() => e.remove(), 7000);
 }
 
 setInterval(rain, 120);
 
+setTimeout(() => {
+  document.getElementById("heartIntro").style.display = "none";
+}, 3000);
 </script>
 
 </body>
-
 </html>
-.item{
-position:fixed;
-top:-60px;
-z-index:999;
-pointer-events:none;
-user-select:none;
-animation:fall linear forwards;
-}
-
-@keyframes fall{
-0%{
-transform:translateY(-80px) rotate(0deg);
-opacity:1;
-}
-100%{
-transform:translateY(110vh) rotate(360deg);
-opacity:0.9;
-}
-}
